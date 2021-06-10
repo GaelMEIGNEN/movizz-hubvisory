@@ -1,0 +1,47 @@
+<!-- Toolbar -->
+<header class="site-navbar" role="banner">
+  <div class="container">
+    <div class="row">
+      <!--<div class="col">
+        <img src="../assets/images/logo-movizz.jpg" alt="Logo Movizz" width="204" height="69"/>
+
+      </div> -->
+      <div class="col-4 text-center ticket-picture">
+        Score : {{ score }}
+      </div>
+      <div class="col-4 text-center ticket-picture">
+        Highscore : {{ highScore }}
+      </div>
+      <div class="col-4 text-center ticket-picture">
+        Time left : {{ timeLeft }}
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main content -->
+<div class="container-fluid content">
+  <div class="background">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        Made by Gaël MEIGNEN for <a href="https://hubvisory.com/">Hubvisory Source.</a>&nbsp;
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <a href="https://hubvisory.com/">
+          <img class="footer-logo" src="../../assets/images/logo_hubvisory.svg.png" alt="Hubvisory logo"/>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+

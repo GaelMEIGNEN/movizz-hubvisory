@@ -10,20 +10,10 @@ export class AppComponent implements OnInit {
   score = 0;
   highScore = 0;
   timeLeft = 0;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onStartQuizz(): void {
-
-  }
-
-  onQuizzYesAnswer(): void {
-    this.score += 1;
-  }
-
-  onQuizzNoAnswer(): void {
-
-  }
 }
