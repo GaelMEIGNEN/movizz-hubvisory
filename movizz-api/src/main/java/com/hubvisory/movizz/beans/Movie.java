@@ -34,12 +34,12 @@ public class Movie {
 
     private int vote_count;
 
-    private List<Actor> actors_in_movie;
+    private Person[] actors_in_movie;
 
     public Movie() {
     }
 
-    public Movie(String adult, String backdrop_path, List<Integer> genre_ids, long id, String original_language, String originial_title, String overview, double popularity, String poster_path, LocalDate release_date, String title, boolean video, double vote_average, int vote_count, List<Actor> actors_in_movie) {
+    public Movie(String adult, String backdrop_path, List<Integer> genre_ids, long id, String original_language, String originial_title, String overview, double popularity, String poster_path, LocalDate release_date, String title, boolean video, double vote_average, int vote_count, Person[] actors_in_movie) {
         this.adult = adult;
         this.backdrop_path = backdrop_path;
         this.genre_ids = genre_ids;
@@ -78,14 +78,20 @@ public class Movie {
     }
 
     public void setPoster_path(String poster_path) {
-        this.poster_path = poster_path;
+        if (poster_path != null) {
+            if (!poster_path.startsWith("https://image.tmdb.org")) {
+                this.poster_path = "https://image.tmdb.org/t/p/w500" + poster_path;
+            } else {
+                this.poster_path = poster_path;
+            }
+        }
     }
 
-    public List<Actor> getActors_in_movie() {
+    public Person[] getActors_in_movie() {
         return actors_in_movie;
     }
 
-    public void setActors_in_movie(List<Actor> actors_in_movie) {
+    public void setActors_in_movie(Person[] actors_in_movie) {
         this.actors_in_movie = actors_in_movie;
     }
 
