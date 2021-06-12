@@ -6,7 +6,7 @@ import java.util.List;
 public class Movie {
 
 
-    private String adult;
+    private Boolean adult;
 
     private String backdrop_path;
 
@@ -34,12 +34,12 @@ public class Movie {
 
     private int vote_count;
 
-    private Person[] actors_in_movie;
+    private List<Person> actors_in_movie;
 
     public Movie() {
     }
 
-    public Movie(String adult, String backdrop_path, List<Integer> genre_ids, long id, String original_language, String originial_title, String overview, double popularity, String poster_path, LocalDate release_date, String title, boolean video, double vote_average, int vote_count, Person[] actors_in_movie) {
+    public Movie(Boolean adult, String backdrop_path, List<Integer> genre_ids, long id, String original_language, String originial_title, String overview, double popularity, String poster_path, LocalDate release_date, String title, boolean video, double vote_average, int vote_count, List<Person> actors_in_movie) {
         this.adult = adult;
         this.backdrop_path = backdrop_path;
         this.genre_ids = genre_ids;
@@ -87,19 +87,19 @@ public class Movie {
         }
     }
 
-    public Person[] getActors_in_movie() {
+    public List<Person> getActors_in_movie() {
         return actors_in_movie;
     }
 
-    public void setActors_in_movie(Person[] actors_in_movie) {
+    public void setActors_in_movie(List<Person> actors_in_movie) {
         this.actors_in_movie = actors_in_movie;
     }
 
-    public String getAdult() {
+    public Boolean getAdult() {
         return adult;
     }
 
-    public void setAdult(String adult) {
+    public void setAdult(Boolean adult) {
         this.adult = adult;
     }
 
@@ -181,5 +181,26 @@ public class Movie {
 
     public void setVote_count(int vote_count) {
         this.vote_count = vote_count;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "adult=" + adult +
+                ", backdrop_path='" + backdrop_path + '\'' +
+                ", genre_ids=" + genre_ids +
+                ", id=" + id +
+                ", original_language='" + original_language + '\'' +
+                ", original_title='" + original_title + '\'' +
+                ", overview='" + overview + '\'' +
+                ", popularity=" + popularity +
+                ", poster_path='" + poster_path + '\'' +
+                ", release_date=" + release_date +
+                ", title='" + title + '\'' +
+                ", video=" + video +
+                ", vote_average=" + vote_average +
+                ", vote_count=" + vote_count +
+                ", actors_in_movie=" + actors_in_movie +
+                '}';
     }
 }

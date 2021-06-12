@@ -1,7 +1,5 @@
 package com.hubvisory.movizz.beans;
 
-import java.util.List;
-
 public class Person {
 
     private boolean adult;
@@ -97,11 +95,24 @@ public class Person {
     public void setProfile_path(String profile_path) {
         if (profile_path != null) {
             if (!profile_path.startsWith("https://image.tmdb.org")) {
-                this.profile_path = "https://image.tmdb.org/t/p/w500" + profile_path;
+                this.profile_path = "https://image.tmdb.org/t/p/w500/" + profile_path;
             } else {
                 this.profile_path = profile_path;
             }
         }
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "adult=" + adult +
+                ", gender=" + gender +
+                ", id=" + id +
+                ", known_for_department='" + known_for_department + '\'' +
+                ", name='" + name + '\'' +
+                ", original_name='" + original_name + '\'' +
+                ", popularity=" + popularity +
+                ", profile_path='" + profile_path + '\'' +
+                '}';
+    }
 }
