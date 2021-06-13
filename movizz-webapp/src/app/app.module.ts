@@ -6,6 +6,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { QuizzViewComponent } from './components/quizz-view/quizz-view.component';
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 import {HttpClientModule} from "@angular/common/http";
+import {QuizzService} from "./services/quizz.service";
 
 const appRoutes: Routes = [
   { path: 'quizz', component: QuizzViewComponent },
@@ -23,7 +24,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    QuizzService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

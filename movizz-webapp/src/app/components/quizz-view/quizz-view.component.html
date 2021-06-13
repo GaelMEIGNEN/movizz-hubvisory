@@ -1,0 +1,12 @@
+
+<div class="row">
+  <div class="col text-center question">
+    {{ quizzQuestion.question }}
+  </div>
+</div>
+<div class="row">
+  <div class="col text-center">
+    <button class="btn btn-success btn-slide-right yes" (click)="onQuizzAnswer('YES')">YES</button>
+    <button class="btn btn-success btn-slide-right no" (click)="onQuizzAnswer('NO')">NO</button>
+  </div>
+</div>
