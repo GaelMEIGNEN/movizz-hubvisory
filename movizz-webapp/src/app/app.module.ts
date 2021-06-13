@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from "@angular/router";
-import { QuizzViewComponent } from './quizz-view/quizz-view.component';
-import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
+import { QuizzViewComponent } from './components/quizz-view/quizz-view.component';
+import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 import {HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes = [

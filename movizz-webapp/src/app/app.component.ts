@@ -6,14 +6,14 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'movizz-webapp';
-  score = 0;
-  highScore = 0;
-  timeLeft = 0;
 
-  constructor() { }
+  score = "";
+  highScore = "";
 
-  ngOnInit(): void {
+  constructor() {
+  }
+
+  ngOnInit() {
   }
 
 }
