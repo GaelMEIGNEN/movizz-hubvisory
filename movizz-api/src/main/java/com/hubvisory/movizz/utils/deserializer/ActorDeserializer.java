@@ -6,12 +6,14 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.hubvisory.movizz.beans.Person;
+import com.hubvisory.movizz.bean.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+@Component
 public class ActorDeserializer extends StdDeserializer<Person[]> {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());

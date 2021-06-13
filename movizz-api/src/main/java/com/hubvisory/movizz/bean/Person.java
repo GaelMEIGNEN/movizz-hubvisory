@@ -1,4 +1,4 @@
-package com.hubvisory.movizz.beans;
+package com.hubvisory.movizz.bean;
 
 public class Person {
 
