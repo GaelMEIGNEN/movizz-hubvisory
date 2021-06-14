@@ -95,7 +95,7 @@ public class Person {
     public void setProfile_path(String profile_path) {
         if (profile_path != null) {
             if (!profile_path.startsWith("https://image.tmdb.org")) {
-                this.profile_path = "https://image.tmdb.org/t/p/w500/" + profile_path;
+                this.profile_path = "https://image.tmdb.org/t/p/w200/" + profile_path;
             } else {
                 this.profile_path = profile_path;
             }

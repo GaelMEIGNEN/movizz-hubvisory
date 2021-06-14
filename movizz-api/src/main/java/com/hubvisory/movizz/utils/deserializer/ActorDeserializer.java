@@ -12,11 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @Component
 public class ActorDeserializer extends StdDeserializer<Person[]> {
 
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public ActorDeserializer(){
         this(null);
@@ -42,7 +43,7 @@ public class ActorDeserializer extends StdDeserializer<Person[]> {
         try {
             TreeNode results = treeNode.get("cast");
 
-            Person[] actors = new Person[results.size()];
+            ArrayList<Person> actorsTemp = new ArrayList<>();
             int i = 0;
             int j = 0;
             while (i<results.size()) {
@@ -59,10 +60,17 @@ public class ActorDeserializer extends StdDeserializer<Person[]> {
                     actor.setPopularity(Double.parseDouble(results.get(i).get("popularity").toString()));
                     actor.setProfile_path(results.get(i).get("profile_path").toString().substring(2,results.get(i).get("profile_path").toString().length()-1));
 
-                    actors[j] = actor;
+                    actorsTemp.add(actor);
                     j++;
                 }
                 i++;
+            }
+            Person[] actors = new Person[actorsTemp.size()];
+            int k = 0;
+            for (Person actor:
+                    actorsTemp) {
+                actors[k] = actor;
+                k++;
             }
             return actors;
         } catch (Exception e) {

@@ -16,7 +16,7 @@ import java.io.IOException;
 @Component
 public class MovieDeserializer extends StdDeserializer<Movie[]> {
 
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public MovieDeserializer(){
         this(null);
@@ -52,7 +52,7 @@ public class MovieDeserializer extends StdDeserializer<Movie[]> {
                 movie.setOriginal_title(results.get(i).get("original_title").toString().replaceAll("[\"\\].*[\\\"]]", ""));
                 movie.setOverview(results.get(i).get("overview").toString().replaceAll("[\"\\].*[\\\"]]", ""));
                 movie.setPopularity(Double.parseDouble(results.get(i).get("popularity").toString()));
-                movie.setPoster_path(results.get(i).get("poster_path").toString().replaceAll("[\"\\].*[\\\"]]", ""));
+                movie.setPoster_path(results.get(i).get("poster_path").toString().substring(2,results.get(i).get("poster_path").toString().length()-1));
                 movie.setTitle(results.get(i).get("title").toString().replaceAll("[\"\\].*[\\\"]]", ""));
                 movie.setVideo(Boolean.getBoolean(results.get(i).get("video").toString()));
                 movie.setVote_average(Double.parseDouble(results.get(i).get("vote_average").toString()));
