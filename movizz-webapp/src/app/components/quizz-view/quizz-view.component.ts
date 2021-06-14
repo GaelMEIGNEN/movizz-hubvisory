@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {QuizzService} from "../../services/quizz.service";
 import {QuizzQuestion} from "../../model/quizz-question";
+import {Router} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-quizz-view',
@@ -9,6 +11,8 @@ import {QuizzQuestion} from "../../model/quizz-question";
 })
 export class QuizzViewComponent implements OnInit {
 
+  timeLeft: number = 10;
+  interval = 0;
   score = 0;
   quizzQuestion: QuizzQuestion = {
     question: "",
@@ -17,10 +21,15 @@ export class QuizzViewComponent implements OnInit {
     url_profile: ""
   };
 
-  constructor(private quizzService: QuizzService) { }
+  constructor(private quizzService: QuizzService,private cookieService: CookieService, private router: Router) {
+    if (cookieService.get("score") != null) {
+      this.score = Number(this.cookieService.get("highScore"));
+    }
+  }
 
   ngOnInit(): void {
     this.getQuestionData();
+    this.startTimer();
   }
 
   /**
@@ -28,10 +37,17 @@ export class QuizzViewComponent implements OnInit {
    * Generates a new question from the API
    */
   onQuizzAnswer(answerUser: String): void {
-    if (this.quizzQuestion.answer == answerUser){
-      this.score += 1;
+    if (this.cookieService.get("score") != null) {
+      this.score = Number(this.cookieService.get("score"));
     }
-    this.quizzService.getQuestionFromServer();
+
+    if (this.quizzQuestion.answer == answerUser){
+      this.score++;
+      this.cookieService.set("score", String(this.score));
+
+    }
+    this.getQuestionData();
+    this.router.navigate( ['quizz']);
   }
 
   /**
@@ -40,11 +56,31 @@ export class QuizzViewComponent implements OnInit {
   getQuestionData(): void {
     this.quizzService.getQuestionFromServer().subscribe((result) => {
         this.quizzQuestion = result;
-        console.log(this.quizzQuestion);
       },
       (error) => {
         console.log('Error : ' + error);
       })
+  }
+
+  /**
+   * Starts the countdown from 60 to 0
+   */
+  startTimer() {
+    this.interval = window.setInterval(() => {
+      if (this.timeLeft > 0){
+        this.timeLeft--;
+      } else {
+        this.pauseTimer();
+        this.quizzService.gameOver();
+      }
+    }, 1000)
+  }
+
+  /**
+   * Pauses the timer (only used when the quizz is finished
+   */
+  pauseTimer() {
+    window.clearInterval(this.interval);
   }
 
 }

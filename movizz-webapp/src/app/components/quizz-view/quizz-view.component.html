@@ -1,12 +1,30 @@
-
+<router-outlet name="routerHeader"></router-outlet>
 <div class="row">
   <div class="col text-center question">
-    {{ quizzQuestion.question }}
+    <h3>{{ quizzQuestion.question }}</h3>
   </div>
 </div>
 <div class="row">
-  <div class="col text-center">
-    <button class="btn btn-success btn-slide-right yes" (click)="onQuizzAnswer('YES')">YES</button>
-    <button class="btn btn-success btn-slide-right no" (click)="onQuizzAnswer('NO')">NO</button>
+  <div class="col text-center question stick-to-top">
+    <img class="hourglass" src="../../../assets/images/hourglass.png" alt="Hourglass"> <p>  Time left :  {{timeLeft}} </p>
+  </div>
+</div>
+<div class="row images">
+  <div class="col-6">
+    <img class="img-thumbnail float-end" *ngIf="quizzQuestion.url_profile.match('https:\\/\\/image\\.tmdb\\.org\\/t\\/p\\/w200\\/.*\\.jpg')" src="{{quizzQuestion.url_profile}}" alt="Actor picture">
+    <img class="img-thumbnail float-end" *ngIf="!quizzQuestion.url_profile.match('https:\\/\\/image\\.tmdb\\.org\\/t\\/p\\/w200\\/.*\\.jpg')" src="../../../assets/images/imagenotfound.jpg" alt="Actor not found">
+  </div>
+
+  <div class="col-6">
+    <img class="img-thumbnail float-start" *ngIf="quizzQuestion.url_poster.match('https:\\/\\/image\\.tmdb\\.org\\/t\\/p\\/w200\\/.*\\.jpg')" src="{{quizzQuestion.url_poster}}" alt="Movie poster">
+    <img class="img-thumbnail float-start" *ngIf="!quizzQuestion.url_poster.match('https:\\/\\/image\\.tmdb\\.org\\/t\\/p\\/w200\\/.*\\.jpg')" src="../../../assets/images/imagenotfound.jpg" alt="Movie not found" >
+  </div>
+</div>
+<div class="row">
+  <div class="col-6 text-center">
+    <button class="btn btn-success btn-slide-right yes float-end" (click)="onQuizzAnswer('YES')">YES</button>
+  </div>
+  <div class="col-6 text-center">
+    <button class="btn btn-success btn-slide-right no float-start" (click)="onQuizzAnswer('NO')">NO</button>
   </div>
 </div>

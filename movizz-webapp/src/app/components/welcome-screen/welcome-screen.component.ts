@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
 import {QuizzService} from "../../services/quizz.service";
 import {Router} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-welcome-screen',
@@ -10,15 +10,17 @@ import {Router} from "@angular/router";
 })
 export class WelcomeScreenComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient, private quizzService: QuizzService, private router: Router) {  }
+  constructor(private quizzService: QuizzService, private router: Router, private cookieService: CookieService) {  }
 
   ngOnInit(): void {
-
+    this.cookieService.set("score", "0");
   }
 
+  /**
+   * Starts the quizz by getting a question and beginning the countdown
+   */
   onStartQuizz(): void {
     this.quizzService.getQuestionFromServer();
-
     this.router.navigate(['quizz'])
   }
 }

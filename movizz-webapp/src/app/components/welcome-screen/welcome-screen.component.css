@@ -140,7 +140,7 @@ header {
 }
 
 .welcome-message {
-  border-radius: 40px;
+  border-radius: 0.25rem;
   border: 1px solid #eee;
   background-color: lightgrey;
   opacity: 0.8;
