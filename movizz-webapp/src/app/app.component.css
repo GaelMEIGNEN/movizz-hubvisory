@@ -23,10 +23,6 @@ p {
   margin: 0;
 }
 
-.toolbar img {
-  margin: 0 16px;
-}
-
 .background {
   background-image: url("../assets/images/cinema.png");
   background-size: 100%;
@@ -117,43 +113,8 @@ footer {
   height: 16px;
 }
 
-header {
-  margin : 2px 0 0 0;
-  position: absolute;
-  top: 15px;
-  width: 100%;
-  line-height: 140px;
-  font-size: 1.25vw;
-  font-weight: bold;
-  height: 15%;
-}
-
 .row {
   margin-right: 0;
-}
-
-.ticket-picture {
-  background-image: url("../assets/images/ticket-cinema.png");
-  background-size: 17vw;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.welcome-message {
-  border-radius: 40px;
-  border: 1px solid #eee;
-  background-color: lightgrey;
-  opacity: 0.95;
-  height: auto;
-  width: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  transition: all 0.2s ease-in-out;
-  line-height: 24px;
-  margin: 25vh 20vw 20vh 20vw;
-  padding: 0.5em 2em 0.5em 2em;
 }
 
 /* Responsive Styles */
@@ -161,14 +122,6 @@ header {
 
   h3 {
     font-size: 1.8em;
-  }
-
-  header {
-    font-size: 2.8vw;
-  }
-
-  .ticket-picture {
-    background-size: 30vw;
   }
 
   .btn {

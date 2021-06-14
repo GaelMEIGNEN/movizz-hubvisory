@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, } from '@angular/core';
 import {QuizzService} from "../../services/quizz.service";
 import {QuizzQuestion} from "../../model/quizz-question";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
+import {HeaderComponent} from "../header/header.component";
 
 @Component({
   selector: 'app-quizz-view',
@@ -11,7 +12,9 @@ import {CookieService} from "ngx-cookie-service";
 })
 export class QuizzViewComponent implements OnInit {
 
-  timeLeft: number = 10;
+  @ViewChild(HeaderComponent) header: HeaderComponent;
+
+  timeLeft: number = 60;
   interval = 0;
   score = 0;
   quizzQuestion: QuizzQuestion = {
@@ -22,12 +25,10 @@ export class QuizzViewComponent implements OnInit {
   };
 
   constructor(private quizzService: QuizzService,private cookieService: CookieService, private router: Router) {
-    if (cookieService.get("score") != null) {
-      this.score = Number(this.cookieService.get("highScore"));
-    }
+    this.header = new HeaderComponent(this.cookieService);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getQuestionData();
     this.startTimer();
   }
@@ -37,14 +38,13 @@ export class QuizzViewComponent implements OnInit {
    * Generates a new question from the API
    */
   onQuizzAnswer(answerUser: String): void {
-    if (this.cookieService.get("score") != null) {
-      this.score = Number(this.cookieService.get("score"));
-    }
 
     if (this.quizzQuestion.answer == answerUser){
       this.score++;
-      this.cookieService.set("score", String(this.score));
-
+      this.header.score = this.score;
+      if (this.score > this.header.highscore) {
+        this.header.highscore = this.score;
+      }
     }
     this.getQuestionData();
     this.router.navigate( ['quizz']);
@@ -71,7 +71,7 @@ export class QuizzViewComponent implements OnInit {
         this.timeLeft--;
       } else {
         this.pauseTimer();
-        this.quizzService.gameOver();
+        this.quizzService.gameOver(this.header.score);
       }
     }, 1000)
   }

@@ -23,20 +23,20 @@ export class QuizzService {
       .get<QuizzQuestion>(this.apiUrl + '/quizz/question');
   }
 
-  gameOver() {
-    this.modifyHighScore();
+  gameOver(score: number) {
+    this.modifyHighScore(score);
     this.router.navigate(['game-over']);
   }
 
   /**
    * Sets the new highScore if score > highScore, and resets the score to 0
    */
-  modifyHighScore() {
-    var score = Number(this.cookieService.get("score"));
+  modifyHighScore(score: number) {
     var highScore = Number(this.cookieService.get("highScore"));
     if (score > highScore) {
       highScore = score;
       this.cookieService.set("highScore", String(highScore));
     }
+    this.cookieService.set("score", String(score));
   }
 }

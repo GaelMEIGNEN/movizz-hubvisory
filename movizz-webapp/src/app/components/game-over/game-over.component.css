@@ -85,13 +85,6 @@ button.btn-slide-right::after {
   margin-top : 5vh;
 }
 
-.ticket-picture {
-  background-image: url("../../../assets/images/ticket-cinema.png");
-  background-size: 17vw;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 /* Responsive Styles */
 @media screen and (max-width: 1000px) {
 

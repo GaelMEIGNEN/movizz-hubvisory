@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
 
 @Component({
@@ -8,16 +8,21 @@ import {CookieService} from "ngx-cookie-service";
 })
 export class HeaderComponent implements OnInit {
 
+
   score = 0;
   highscore = 0;
 
   constructor(private cookieService: CookieService) {
-
   }
 
   ngOnInit(): void {
-      this.highscore = Number(this.cookieService.get("highScore"));
-      this.score = Number(this.cookieService.get("score"));
+    var scoreCookie = Number(this.cookieService.get("score"));
+    if (scoreCookie > 0){
+      this.score = scoreCookie;
+    } else {
+      this.score = 0;
+    }
+    this.highscore = Number(this.cookieService.get("highScore"));
   }
 
 }

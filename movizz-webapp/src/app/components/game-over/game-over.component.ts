@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuizzService} from "../../services/quizz.service";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
@@ -26,7 +26,7 @@ export class GameOverComponent implements OnInit {
    */
   onStartQuizz(): void {
     this.quizzService.getQuestionFromServer();
-    this.cookieService.set("score", "0");
+    this.score = Number(this.cookieService.set("score", "0"));
     this.router.navigate(['quizz'])
   }
 
