@@ -30,6 +30,12 @@ header {
   height: 15%;
 }
 
+.popcorn {
+  width: 6vw;
+  height: 10vh;
+  margin-bottom: 2vh;
+}
+
 .row {
   margin-right: 0;
 }
@@ -46,6 +52,12 @@ header {
 
   header {
     font-size: 2.8vw;
+  }
+
+  .popcorn {
+    width: 5vw;
+    height: 3.5vh;
+    margin-bottom: 2vh;
   }
 
   .ticket-picture {
