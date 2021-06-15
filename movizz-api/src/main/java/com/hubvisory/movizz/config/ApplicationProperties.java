@@ -3,12 +3,10 @@ package com.hubvisory.movizz.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 @ConfigurationProperties("tmdb.api")
 @Configuration
 @ComponentScan("com.hubvisory.movizz")
-@Component
 public class ApplicationProperties {
 
     private String url;

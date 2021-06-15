@@ -37,6 +37,7 @@ public class MovieDeserializer extends StdDeserializer<Movie[]> {
     @Override
     public Movie[] deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
 
+
         ObjectCodec codec = jsonParser.getCodec();
         TreeNode treeNode = codec.readTree(jsonParser);
         try {
@@ -76,6 +77,7 @@ public class MovieDeserializer extends StdDeserializer<Movie[]> {
     public Movie[] moviesDeserialize(String apiResults) {
         Movie[] movies = null;
         try {
+
             ObjectMapper mapper = new ObjectMapper();
             SimpleModule module = new SimpleModule("MovieDeserializer", new Version(1, 0, 0, null, null, null));
             module.addDeserializer(Movie[].class, this);

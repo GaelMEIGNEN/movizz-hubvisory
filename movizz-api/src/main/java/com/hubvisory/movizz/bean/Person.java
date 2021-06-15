@@ -1,5 +1,8 @@
 package com.hubvisory.movizz.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person {
 
     private boolean adult;
@@ -114,5 +117,42 @@ public class Person {
                 ", popularity=" + popularity +
                 ", profile_path='" + profile_path + '\'' +
                 '}';
+    }
+
+    /**
+     * Takes all actors from an array of actor and put them in a list of actor
+     *
+     * @param actors An array of actor
+     * @return A list of actor
+     */
+    public static List<Person> fromActorTableToActorList (Person[] actors) {
+        List<Person> actorsList = new ArrayList<>();
+        if (actors != null) {
+            for (Person actor:
+                    actors) {
+                actorsList.add(actor);
+            }
+        }
+        return actorsList;
+    }
+
+    /**
+     * Finds if the actor in parameter stars in the movie in parameter
+     *
+     * @param actor
+     * @param movie
+     * @return "YES" if the actor stars in the movie, "NO" otherwise
+     */
+    public static String isActorStarringInMovie(Person actor, Movie movie) {
+        if (actor != null && movie != null) {
+            if (movie.getActors_in_movie() != null) {
+                if (movie.getActors_in_movie().contains(actor)) {
+                    return "YES";
+                } else {
+                    return "NO";
+                }
+            }
+        }
+        return "";
     }
 }
