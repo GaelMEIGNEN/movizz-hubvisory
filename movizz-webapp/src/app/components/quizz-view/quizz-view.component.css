@@ -92,11 +92,6 @@ button.btn-slide-right::after {
   transition: all 0.35s;
 }
 
-.content {
-  padding-right: 0;
-  padding-left: 0;
-}
-
 .img-thumbnail {
   width:11vw;
   height:33vh;
