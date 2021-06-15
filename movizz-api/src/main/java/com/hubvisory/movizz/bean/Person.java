@@ -98,7 +98,7 @@ public class Person {
     public void setProfile_path(String profile_path) {
         if (profile_path != null) {
             if (!profile_path.startsWith("https://image.tmdb.org")) {
-                this.profile_path = "https://image.tmdb.org/t/p/w200/" + profile_path;
+                this.profile_path = "https://image.tmdb.org/t/p/w200" + profile_path;
             } else {
                 this.profile_path = profile_path;
             }
@@ -139,8 +139,8 @@ public class Person {
     /**
      * Finds if the actor in parameter stars in the movie in parameter
      *
-     * @param actor
-     * @param movie
+     * @param actor An actor object
+     * @param movie A movie object
      * @return "YES" if the actor stars in the movie, "NO" otherwise
      */
     public static String isActorStarringInMovie(Person actor, Movie movie) {

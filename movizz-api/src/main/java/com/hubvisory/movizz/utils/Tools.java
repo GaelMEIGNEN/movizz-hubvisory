@@ -13,7 +13,7 @@ public class Tools {
      * @param parameters Optional list of String for URI parameters
      * @return If one of these string is null, we return null
      */
-    public static String concatenateUriWithTMDBApiKey(String uriApi, String key, List<String> parameters) {
+    public static String concatenateUriWithTMDBApiKeyAndParams(String uriApi, String key, List<String> parameters) {
         String finalUri = "";
 
         if (key != null && uriApi != null) {

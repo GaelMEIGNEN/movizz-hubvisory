@@ -47,14 +47,14 @@ public class MovieDeserializer extends StdDeserializer<Movie[]> {
                 Movie movie = new Movie();
 
                 movie.setAdult(Boolean.getBoolean(results.get(i).get("adult").toString()));
-                movie.setBackdrop_path(results.get(i).get("backdrop_path").toString().replaceAll("[\"\\].*[\\\"]]", ""));
+                movie.setBackdrop_path(results.get(i).get("backdrop_path").toString().substring(1,results.get(i).get("backdrop_path").toString().length()-1));
                 movie.setId(Long.parseLong(results.get(i).get("id").toString()));
-                movie.setOriginal_language(results.get(i).get("original_language").toString().replaceAll("[\"\\].*[\\\"]]", ""));
-                movie.setOriginal_title(results.get(i).get("original_title").toString().replaceAll("[\"\\].*[\\\"]]", ""));
-                movie.setOverview(results.get(i).get("overview").toString().replaceAll("[\"\\].*[\\\"]]", ""));
+                movie.setOriginal_language(results.get(i).get("original_language").toString().replaceAll("[\"]*[\"]", ""));
+                movie.setOriginal_title(results.get(i).get("original_title").toString().replaceAll("[\"]*[\"]", ""));
+                movie.setOverview(results.get(i).get("overview").toString().replaceAll("[\"]*[\"]", ""));
                 movie.setPopularity(Double.parseDouble(results.get(i).get("popularity").toString()));
-                movie.setPoster_path(results.get(i).get("poster_path").toString().substring(2,results.get(i).get("poster_path").toString().length()-1));
-                movie.setTitle(results.get(i).get("title").toString().replaceAll("[\"\\].*[\\\"]]", ""));
+                movie.setPoster_path(results.get(i).get("poster_path").toString().substring(1,results.get(i).get("poster_path").toString().length()-1));
+                movie.setTitle(results.get(i).get("title").toString().replaceAll("[\"]*[\"]", ""));
                 movie.setVideo(Boolean.getBoolean(results.get(i).get("video").toString()));
                 movie.setVote_average(Double.parseDouble(results.get(i).get("vote_average").toString()));
                 movie.setVote_count(Integer.parseInt(results.get(i).get("vote_count").toString()));

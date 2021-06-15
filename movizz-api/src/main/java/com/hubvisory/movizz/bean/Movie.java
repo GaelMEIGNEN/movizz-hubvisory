@@ -80,7 +80,7 @@ public class Movie {
     public void setPoster_path(String poster_path) {
         if (poster_path != null) {
             if (!poster_path.startsWith("https://image.tmdb.org")) {
-                this.poster_path = "https://image.tmdb.org/t/p/w200/" + poster_path;
+                this.poster_path = "https://image.tmdb.org/t/p/w200" + poster_path;
             } else {
                 this.poster_path = poster_path;
             }

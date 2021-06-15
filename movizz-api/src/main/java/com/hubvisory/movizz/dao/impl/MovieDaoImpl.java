@@ -11,7 +11,7 @@ import reactor.core.publisher.Flux;
 import java.time.Duration;
 import java.util.List;
 
-import static com.hubvisory.movizz.utils.Tools.concatenateUriWithTMDBApiKey;
+import static com.hubvisory.movizz.utils.Tools.concatenateUriWithTMDBApiKeyAndParams;
 
 @Component
 public class MovieDaoImpl implements MovieDao {
@@ -33,7 +33,7 @@ public class MovieDaoImpl implements MovieDao {
     @Override
     public Movie[] getMoviesFromTMDBAPI(List<String> criterias, String url, String uri, String key) {
         tmdbApi = WebClient.create(url);
-        String uriAPI = concatenateUriWithTMDBApiKey(uri, key, criterias);
+        String uriAPI = concatenateUriWithTMDBApiKeyAndParams(uri, key, criterias);
         Flux<String> apiRequest = tmdbApi.get().uri(uriAPI).retrieve().bodyToFlux(String.class).log();
         String result = apiRequest.blockLast(REQUEST_TIMEOUT);
         return movieDeserializer.moviesDeserialize(result);

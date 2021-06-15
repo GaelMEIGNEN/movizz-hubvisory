@@ -54,11 +54,11 @@ public class ActorDeserializer extends StdDeserializer<Person[]> {
                     actor.setAdult(Boolean.getBoolean(results.get(i).get("adult").toString()));
                     actor.setGender(Integer.parseInt(results.get(i).get("gender").toString()));
                     actor.setId(Long.parseLong(results.get(i).get("id").toString()));
-                    actor.setKnown_for_department(results.get(i).get("known_for_department").toString().replaceAll("[\"\\].*[\\\"]]", ""));
-                    actor.setName(results.get(i).get("name").toString().replaceAll("[\"\\].*[\\\"]]", ""));
-                    actor.setOriginal_name(results.get(i).get("original_name").toString().replaceAll("[\"\\].*[\\\"]]", ""));
+                    actor.setKnown_for_department(results.get(i).get("known_for_department").toString().replaceAll("[\"]*[\"]", ""));
+                    actor.setName(results.get(i).get("name").toString().replaceAll("[\"]*[\"]", ""));
+                    actor.setOriginal_name(results.get(i).get("original_name").toString().replaceAll("[\"]*[\"]", ""));
                     actor.setPopularity(Double.parseDouble(results.get(i).get("popularity").toString()));
-                    actor.setProfile_path(results.get(i).get("profile_path").toString().substring(2,results.get(i).get("profile_path").toString().length()-1));
+                    actor.setProfile_path(results.get(i).get("profile_path").toString().substring(1,results.get(i).get("profile_path").toString().length()-1));
 
                     actorsTemp.add(actor);
                     j++;
