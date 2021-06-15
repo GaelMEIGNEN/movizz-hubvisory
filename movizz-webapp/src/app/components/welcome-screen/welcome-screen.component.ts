@@ -20,7 +20,6 @@ export class WelcomeScreenComponent implements OnInit {
    * Starts the quizz by getting a question and beginning the countdown
    */
   onStartQuizz(): void {
-    this.quizzService.getQuestionFromServer();
     this.router.navigate(['quizz'])
   }
 }
